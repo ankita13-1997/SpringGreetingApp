@@ -1,19 +1,27 @@
 package com.bridzelabz.greetingapp.model;
 
 public class Greeting {
-    final long id;
-    final String format;
+     long id;
+     String name;
 
     public long getId() {
         return id;
     }
 
-    public String getFormat() {
-        return format;
+    public String getName() {
+        return name;
     }
 
-    public Greeting(long id, String format) {
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Greeting(long id, String name) {
         this.id=id;
-        this.format=format;
+        this.name=name;
     }
 }

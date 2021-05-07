@@ -1,10 +1,7 @@
 package com.bridzelabz.greetingapp.controller;
 
 import com.bridzelabz.greetingapp.model.Greeting;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -25,6 +22,10 @@ public class GreetingController {
                 String.format(template,name));
     }
 
-
+   @PostMapping("/post")
+   public Greeting greeting(@RequestBody Greeting greeting){
+       return new Greeting(counter.incrementAndGet(),
+               String.format(template, greeting.getName()));
+   }
 
 }
