@@ -6,6 +6,9 @@ import com.bridzelabz.greetingapp.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
@@ -26,4 +29,19 @@ public class GreetingServices implements IGreetingService{
     public MessageGreet findUsersById(long id) {
         return greetingRepository.findById(id).get();
     }
+
+    @Override
+    public void deleteById(long id) {
+        greetingRepository.deleteById(id);
+    }
+
+    @Override
+    public List<MessageGreet> getAllUsers() {
+        List<MessageGreet> greetList = new ArrayList<MessageGreet>();
+        greetingRepository.findAll().forEach(greet ->greetList.add(greet));
+        return greetList;
+    }
+
+
+
 }

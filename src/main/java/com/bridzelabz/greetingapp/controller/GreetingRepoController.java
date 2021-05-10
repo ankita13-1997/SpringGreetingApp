@@ -4,10 +4,7 @@ import com.bridzelabz.greetingapp.model.MessageGreet;
 import com.bridzelabz.greetingapp.model.User;
 import com.bridzelabz.greetingapp.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -26,6 +23,28 @@ public class GreetingRepoController {
           User user =new User();
           user.setFirstName(name);
           return greetingService.addGreeting(user);
+
+    }
+
+
+    @GetMapping(value ={"/query"})
+    public MessageGreet greeting(@RequestParam(value = "firstName",defaultValue = "World") String firstName,
+                                 @RequestParam(value = "lastName",defaultValue = "World") String lastName){
+        User user =new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        return greetingService.addGreeting(user);
+
+    }
+
+    @RequestMapping("/query1")
+    public String greeting(@RequestParam(value = "id") Long id){
+        MessageGreet messageGreet = new MessageGreet();
+        greetingService.deleteById(id);
+        return "the message of id " +id+ " is deleted from repo";
+
+
+
 
     }
 
