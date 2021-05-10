@@ -9,8 +9,17 @@ import javax.persistence.Table;
 public class MessageGreet {
 
     @Id
-    private final long id;
-    private final String message;
+    private  long id;
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    private  String message;
 
     public MessageGreet() {
         id=0;

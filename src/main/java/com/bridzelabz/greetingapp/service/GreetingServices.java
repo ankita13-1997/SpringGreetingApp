@@ -42,6 +42,15 @@ public class GreetingServices implements IGreetingService{
         return greetList;
     }
 
+    @Override
+    public MessageGreet updateGreetingMessage(long id, User user) {
+        MessageGreet messageGreet =greetingRepository.findById(id).orElse(null);
+        if (messageGreet !=null){
+            String message = String.format(template,(user.toString().isEmpty()) ? "Hello World" : user.toString());
+            return greetingRepository.save(new MessageGreet(id,message));
+        }
+        return null;
+    }
 
 
 }

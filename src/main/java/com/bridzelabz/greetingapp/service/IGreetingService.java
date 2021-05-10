@@ -12,5 +12,6 @@ public interface IGreetingService {
     MessageGreet findUsersById(long id);
     void deleteById(long id);
     List<MessageGreet> getAllUsers();
+    MessageGreet updateGreetingMessage(long id, User user);
 
 }
